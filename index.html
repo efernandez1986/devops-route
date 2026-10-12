@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DevOps Route — Ruta de 90 días</title>
+<meta name="description" content="Plataforma de estudio DevOps en español: plan día a día, lecciones, videos, laboratorios, manuales descargables y evaluaciones.">
+<meta name="theme-color" content="#11161b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f1eee5" media="(prefers-color-scheme: light)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>try{var t=localStorage.getItem("estiba.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#view">Saltar al contenido</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v10m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6m0-6L10 14M18 14v5H5V6h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="n-plan" viewBox="0 0 24 24"><path d="M4 14h5v5H4zM10 14h5v5h-5zM7 8h5v5H7zM16 14h4v5h-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="n-metodo" viewBox="0 0 24 24"><path d="M12 3v18M12 7l7-3v10l-7 3M12 7L5 4v10l7 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="n-evaluacion" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8.5 9l1.5 1.5L13 7.5M8.5 15h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="n-recursos" viewBox="0 0 24 24"><path d="M5 5h9a3 3 0 0 1 3 3v11H8a3 3 0 0 1-3-3zM5 16a3 3 0 0 1 3-3h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="n-descargas" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<div class="app">
+  <aside class="rail">
+    <a class="brand" href="#/" translate="no">
+      <img src="favicon.svg" width="40" height="40" alt="">
+      <span>DevOps Route<small>Plan de 90 días</small></span>
+    </a>
+    <nav id="nav" aria-label="Principal"></nav>
+    <div class="rail-foot">
+      <div class="meter"><div class="meter-bar" role="progressbar" aria-label="Progreso total" aria-valuemin="0" aria-valuemax="100" id="meter-bar"><i id="meter"></i></div><span id="meter-txt"></span></div>
+      <button id="theme" class="btn ghost" type="button"><svg class="ico" aria-hidden="true"><use href="#i-theme"/></svg>Cambiar tema</button>
+    </div>
+  </aside>
+  <main id="view" tabindex="-1"></main>
+</div>
+<script type="text/plain" id="guias">
+## 1
+- En PowerShell (como administrador): $ wsl --install -d Ubuntu   y reinicia; crea tu usuario
+- $ ls /
+- $ ls /etc | head
+- $ cat /etc/os-release
+- $ cat /proc/meminfo | head
+- $ ls /var/log
+- $ ps aux | head
+> Dibujas el árbol de / de memoria y corriges, como mucho, 2 carpetas al compararlo con ls /.
+## 2
+- $ mkdir -p ~/lab && cd ~/lab
+- $ ls /etc > etc.txt && wc -l etc.txt
+- $ ls /noexiste 2> errores.txt; cat errores.txt
+- $ find /var -type f -printf '%s %p\n' 2>/dev/null | sort -rn | head -10
+> Obtienes los 10 archivos más grandes de /var con un solo one-liner y explicas cada parte.
+## 3
+- $ sudo adduser ana && sudo adduser beto
+- $ sudo groupadd equipo && sudo usermod -aG equipo ana && sudo usermod -aG equipo beto
+- $ sudo mkdir /srv/compartido && sudo chgrp equipo /srv/compartido
+- $ sudo chmod 2770 /srv/compartido && sudo chmod +t /srv/compartido
+- $ sudo -u ana touch /srv/compartido/a.txt
+- $ sudo -u beto rm /srv/compartido/a.txt   (debe fallar por el sticky bit)
+> Ana crea un archivo, Beto no puede borrarlo y sabes decir qué bit lo impide.
+## 4
+- En WSL2 activa systemd: agrega "[boot]" y "systemd=true" a /etc/wsl.conf y ejecuta $ wsl --shutdown desde Windows
+- $ printf '#!/bin/bash\nwhile true; do date >> /tmp/hola.log; sleep 5; done\n' > ~/hola.sh && chmod +x ~/hola.sh
+- Crea /etc/systemd/system/hola.service con [Service] ExecStart=/home/TU_USUARIO/hola.sh y Restart=on-failure, y [Install] WantedBy=multi-user.target
+- $ sudo systemctl daemon-reload && sudo systemctl enable --now hola
+- $ sudo kill -9 $(systemctl show -p MainPID --value hola)
+- $ journalctl -u hola -n 20
+> Matas el proceso con kill -9 y systemd lo levanta solo; lo ves en journalctl.
+## 5
+- $ awk 'BEGIN{srand(); for(i=0;i<200;i++) printf "10.0.0.%d - - [01/Jan/2025] \"GET /p%d HTTP/1.1\" %d 123\n", int(rand()*10), int(rand()*5), (rand()<0.8?200:500)}' > access.log
+- $ awk '{print $1}' access.log | sort | uniq -c | sort -rn | head
+- $ awk '{print $(NF-1)}' access.log | sort | uniq -c
+- $ grep -c ' 500 ' access.log
+- $ sed -n '1,5p' access.log
+> Sacas el top de IPs y el conteo por código de estado, cada uno con un solo comando.
+## 6
+- $ dd if=/dev/zero of=disco.img bs=1M count=64
+- $ mkfs.ext4 -N 256 disco.img   (solo 256 inodos, a propósito)
+- $ sudo mkdir -p /mnt/prueba && sudo mount -o loop disco.img /mnt/prueba
+- $ sudo bash -c 'cd /mnt/prueba; for i in $(seq 1 400); do touch f$i; done'
+- $ df -h /mnt/prueba && df -i /mnt/prueba
+- $ sudo umount /mnt/prueba
+> Reproduces «No space left on device» con df -h mostrando espacio libre y explicas por qué (df -i).
+## 7
+- $ ssh-keygen -t ed25519
+- $ sudo apt install -y openssh-server && sudo systemctl enable --now ssh
+- $ ssh-copy-id localhost
+- Edita /etc/ssh/sshd_config: PasswordAuthentication no y PermitRootLogin no
+- $ sudo sshd -t && sudo systemctl reload ssh
+- $ ssh localhost
+- $ ssh -L 8080:localhost:80 localhost
+> Entras solo con clave, la contraseña es rechazada y el túnel -L responde.
+## 8
+- Entra a overthewire.org/wargames/bandit y resuelve los niveles 0 a 10
+- $ ssh bandit0@bandit.labs.overthewire.org -p 2220   (contraseña: bandit0)
+- Comandos que usarás: ls -a, cat ./-, file, find, strings, base64 -d, sort | uniq -u, tr
+- Anota cada contraseña y el comando con que la obtuviste
+> Llegas al nivel 10 y tienes una lista de ~20 comandos con una línea de «para qué sirve».
+## 9
+- $ sudo apt install -y tcpdump curl
+- Terminal A: $ sudo tcpdump -i any -nn 'tcp port 80' -c 12
+- Terminal B: $ curl -sI http://example.com > /dev/null
+- Identifica los flags: [S] SYN, [S.] SYN-ACK, [.] ACK, [F.] FIN
+- Opcional: en Wireshark filtra tcp.flags.syn==1
+> Señalas en la captura las tres líneas del handshake y las del cierre.
+## 10
+- $ sudo apt install -y ipcalc
+- $ ipcalc 10.0.0.0/16
+- $ ipcalc 10.0.1.0/24
+- Diseña una tabla: dev 10.0.0.0/20, stage 10.0.16.0/20, prod 10.0.32.0/20, con subredes públicas y privadas por AZ
+- Verifica que no se solapen
+> Tienes una tabla de CIDR sin solapes y sabes cuántos hosts caben en cada bloque.
+## 11
+- $ dig +trace example.com
+- $ dig example.com A +short
+- $ dig example.com NS +short
+- $ dig @1.1.1.1 example.com MX
+- $ dig -x 8.8.8.8 +short
+> Explicas cada salto (raíz → TLD → autoritativo) y el TTL de la respuesta final.
+## 12
+- $ curl -v https://example.com -o /dev/null
+- $ curl -I https://example.com
+- $ echo | openssl s_client -connect example.com:443 -servername example.com 2>/dev/null | openssl x509 -noout -subject -issuer -dates
+- $ curl -s -o /dev/null -w '%{http_code}\n' https://example.com/no-existe
+- Repite con 3 sitios y anota emisor y fecha de expiración
+> Para 3 sitios sabes emisor, expiración y versión de TLS negociada.
+## 13
+- $ sudo apt install -y nginx
+- Crea dos carpetas con un index.html distinto y sirve cada una: $ python3 -m http.server 9001  /  $ python3 -m http.server 9002
+- /etc/nginx/conf.d/lb.conf: upstream app { server 127.0.0.1:9001; server 127.0.0.1:9002; } server { listen 8081; location / { proxy_pass http://app; } }
+- $ sudo nginx -t && sudo systemctl reload nginx
+- $ for i in 1 2 3 4; do curl -s localhost:8081; done
+- Detén un backend y repite
+> Ves alternar las respuestas y, al caer un backend, nginx sigue sirviendo con el otro.
+## 14
+- Falla 1 (DNS): añade «1.2.3.4 example.com» a /etc/hosts y prueba $ curl example.com; diagnostica con $ getent hosts example.com
+- Falla 2 (puerto): $ nc -zv localhost 9999 falla; confirma con $ ss -tulpn
+- Falla 3 (ruta): $ sudo ip route add blackhole 8.8.8.8 y luego $ ping 8.8.8.8; diagnostica con $ ip route get 8.8.8.8
+- Limpia: quita la línea de /etc/hosts y $ sudo ip route del blackhole 8.8.8.8
+- Usa $ mtr -rwc 5 example.com para ver el camino
+> Para cada falla escribes: síntoma → comando que lo confirmó → causa → arreglo.
+## 15
+- $ git init lab-git && cd lab-git
+- $ echo 'hola' | git hash-object -w --stdin
+- $ git cat-file -t <SHA> && git cat-file -p <SHA>
+- $ git update-index --add --cacheinfo 100644,<SHA>,hola.txt
+- $ git write-tree
+- $ git commit-tree <TREE> -m 'primer commit'
+- $ git update-ref refs/heads/main <COMMIT> && git log --oneline
+> Creas un commit sin usar git add ni git commit y explicas blob → tree → commit.
+## 16
+- $ git init lab16 && cd lab16 && echo a > f && git add f && git commit -m base
+- $ git switch -c feat && echo b >> f && git commit -am feat
+- $ git switch main && echo c >> f && git commit -am main
+- $ git merge feat   (habrá conflicto: edita, git add f, git commit)
+- Repite desde cero con $ git rebase main estando en feat
+- $ git rebase -i HEAD~3   (reordena o haz squash)
+- $ git log --oneline --graph --all
+> Resuelves un conflicto de las dos maneras y ves en --graph la diferencia entre merge y rebase.
+## 17
+- Crea un repo en GitHub y clónalo
+- Settings → Branches → regla en main: exigir PR y 1 aprobación
+- $ git switch -c cambio-1 && (edita algo) && git push -u origin cambio-1
+- Abre el PR, comenta una línea y apruébalo
+- Haz «Squash and merge»
+> No puedes hacer push directo a main y tu cambio entra solo por PR.
+## 18
+- $ git reset --hard HEAD~2   y luego $ git reflog && git reset --hard HEAD@{1}
+- Crea 20 commits donde uno rompa test.sh: $ git bisect start && git bisect bad && git bisect good <SHA> && git bisect run ./test.sh
+- $ git cherry-pick <SHA>
+- Crea .git/hooks/pre-commit que falle si hay «TODO» y hazlo ejecutable con chmod +x
+> bisect te da el commit culpable solo y recuperas commits «perdidos» con reflog.
+## 19
+- Haz 3 commits: feat: ..., fix: ... y feat!: ...
+- $ git tag -a v0.1.0 -m 'primera versión'
+- $ git log --pretty=format:'%s' v0.1.0
+- Genera CHANGELOG.md agrupando Features y Fixes (a mano o con git-cliff)
+> Tienes un tag v0.1.0 y un CHANGELOG con secciones Features y Fixes.
+## 20
+- Crea backup.sh con: shebang, set -euo pipefail, trap 'echo fallo en línea $LINENO >&2' ERR, SRC="${1:?uso: $0 DIR}" y tar czf "/tmp/backup-$(date +%F).tgz" "$SRC"
+- Rotación: $ ls -1t /tmp/backup-*.tgz | tail -n +4 | xargs -r rm --
+- $ chmod +x backup.sh && ./backup.sh ~/lab
+- $ sudo apt install -y shellcheck && shellcheck backup.sh
+- Pruébalo sin argumento y con un directorio inexistente
+> ShellCheck no da avisos y el script falla con un mensaje claro ante entradas malas.
+## 21
+- $ crontab -e   → */2 * * * * /home/TU_USUARIO/backup.sh ~/lab >> ~/cron.log 2>&1
+- /etc/systemd/system/backup.service: [Service] Type=oneshot, ExecStart=/home/TU_USUARIO/backup.sh /home/TU_USUARIO/lab
+- /etc/systemd/system/backup.timer: [Timer] OnCalendar=*:0/5 y Persistent=true; [Install] WantedBy=timers.target
+- $ sudo systemctl daemon-reload && sudo systemctl enable --now backup.timer
+- $ systemctl list-timers | grep backup
+- $ journalctl -u backup.service -n 10
+> El timer aparece en list-timers y ves sus ejecuciones en journalctl.
+## 22
+- $ python3 -m venv .venv && source .venv/bin/activate
+- Crea metricas.json con una lista de objetos {servicio, latencia_ms, ok}
+- Escribe resumen.py: lee el JSON, calcula media de latencia y % ok por servicio y lo imprime como tabla
+- $ python resumen.py metricas.json
+- Agrega if __name__ == '__main__': y argparse para la ruta
+> El script resume las métricas y no se rompe con un JSON vacío.
+## 23
+- $ pip install requests
+- Escribe salud.py: recorre 5 URLs con requests.get(url, timeout=3)
+- Agrega 3 reintentos con espera 1 s, 2 s, 4 s
+- Muestra OK/FAIL y el tiempo de respuesta
+- Incluye una URL inválida a propósito
+- Prueba subprocess.run(['curl','-sI',url], check=True) para una verificación alterna
+> El script no se cuelga ante una URL caída y reporta tiempos.
+## 24
+- $ pip install boto3
+- $ aws configure   (o variables de entorno; nunca claves en el código)
+- Escribe sin_tags.py: get_paginator('describe_instances') y lista las instancias sin la etiqueta Owner
+- $ python sin_tags.py
+- Si aún no tienes cuenta: $ pip install moto para simular EC2
+> Lista correctamente los recursos que no tienen la etiqueta requerida.
+## 25
+- $ pip install pytest ruff pre-commit
+- Crea test_resumen.py con 3 casos: normal, vacío y ok=False
+- $ pytest -q
+- $ ruff check . && ruff format .
+- Crea .pre-commit-config.yaml con los hooks de ruff y $ pre-commit install
+- Intenta un commit con un error de estilo
+> Un commit con código mal formateado es rechazado por pre-commit.
+## 26
+- Estructura: mi-herramienta/{src, tests, README.md, pyproject.toml}
+- Conviértelo en CLI con argparse y --help claro
+- Devuelve exit code distinto de 0 ante un error
+- $ git tag v0.1.0 && git push --tags
+- Crea una Release en GitHub con notas
+- README: qué hace, cómo instalar, cómo usar y un ejemplo
+> Alguien puede instalar y usar tu herramienta solo con tu README.
+## 27
+- $ sudo unshare --pid --fork --mount-proc --uts --net bash
+- Dentro: $ hostname   $ ps aux   $ ip a
+- $ exit
+- $ ls /sys/fs/cgroup   y   $ cat /proc/self/cgroup
+- Compara con $ docker run --rm alpine ps aux
+> Explicas qué aisló cada namespace y qué hace cgroups que unshare no hace.
+## 28
+- $ docker pull alpine:3.20 && docker pull nginx:1.27
+- $ docker image inspect nginx:1.27 | head -40
+- $ docker history nginx:1.27
+- $ docker images --digests
+- Analiza capas con dive (instalado o vía contenedor)
+- Anota: tamaño total, número de capas y cuál pesa más
+> Identificas la capa más pesada y propones 3 optimizaciones.
+## 29
+- Crea una app mínima con un Dockerfile ingenuo (FROM node:22, COPY . ., RUN npm install)
+- $ docker build -t app:v1 . && docker images app
+- Reescríbelo multi-stage: build en node:22 y final en node:22-slim, USER node, COPY package*.json antes del código
+- Agrega .dockerignore (node_modules, .git)
+- $ docker build -t app:v2 . && docker images app
+> La imagen v2 pesa al menos 70% menos y corre como no root.
+## 30
+- $ docker network create red-app && docker volume create datos
+- $ docker run -d --name db --network red-app -v datos:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secreto postgres:16
+- $ docker run --rm --network red-app -e PGPASSWORD=secreto postgres:16 psql -h db -U postgres -c 'select 1'
+- $ docker rm -f db y vuelve a crearlo con el mismo volumen
+- Comprueba que los datos siguen ahí
+> El nombre «db» resuelve dentro de la red y los datos sobreviven al borrar el contenedor.
+## 31
+- Crea compose.yaml con web, db y redis; healthcheck en db
+- En web: depends_on: db: condition: service_healthy
+- Variables en un archivo .env
+- $ docker compose up -d && docker compose ps
+- $ docker compose logs -f web
+- $ docker compose down   y luego   $ docker compose down -v
+> web arranca solo cuando db está healthy.
+## 32
+- $ trivy image --severity HIGH,CRITICAL app:v2   (instala trivy o usa su contenedor)
+- Cambia la imagen base a una más nueva o slim y repite
+- Anota las CVEs antes y después
+- $ trivy config .   (revisa tu Dockerfile)
+> Reduces las CVEs críticas y documentas qué cambio las eliminó.
+## 33
+- Crea un PAT con permiso write:packages en GitHub
+- $ echo $PAT | docker login ghcr.io -u TU_USUARIO --password-stdin
+- $ docker tag app:v2 ghcr.io/TU_USUARIO/app:0.1.0
+- $ docker push ghcr.io/TU_USUARIO/app:0.1.0
+- $ docker inspect --format='{{index .RepoDigests 0}}' ghcr.io/TU_USUARIO/app:0.1.0
+- Haz pull por digest
+> Descargas tu imagen por digest y sabes por qué es más seguro que latest.
+## 34
+- $ docker run -d --name oom --memory=20m python:3.12 python -c "x=' '*(100*1024*1024); import time; time.sleep(60)"
+- $ docker inspect oom --format '{{.State.OOMKilled}} {{.State.ExitCode}}'
+- $ docker run --name falla alpine sh -c 'exit 3'; docker inspect falla --format '{{.State.ExitCode}}'
+- $ docker logs oom
+- $ docker exec -it <contenedor-sano> sh
+> Tienes un runbook de 5 síntomas con el comando de diagnóstico de cada uno.
+## 35
+- Dibuja el flujo de tu proyecto: commit → build → test → deploy → monitoreo
+- Anota cuánto tarda cada etapa hoy (aunque sea manual)
+- Calcula tu lead time y cuántas veces despliegas por semana
+- Estima tu change failure rate
+- Identifica el cuello de botella más grande
+> Tienes un diagrama con tiempos y una frase: «mi mayor cuello de botella es X».
+## 36
+- Crea un repo con una app y tests
+- $ mkdir -p .github/workflows && nano .github/workflows/ci.yml
+- on: pull_request; job test con runs-on: ubuntu-latest; steps: checkout, setup, instalar, lint, tests
+- $ git switch -c prueba-ci && git push -u origin prueba-ci
+- Abre el PR y mira la pestaña Actions
+- Rompe un test a propósito: el check debe ponerse rojo
+> El PR muestra checks verdes y luego rojos cuando rompes algo.
+## 37
+- Agrega strategy.matrix con dos versiones (node 20 y 22, o python 3.11 y 3.12)
+- Agrega caché de dependencias con la clave del lockfile (cache: npm en setup-node)
+- Sube un artefacto con actions/upload-artifact (reporte de tests)
+- Ejecuta dos veces y compara el tiempo de instalación
+- Descarga el artefacto desde la interfaz
+> Ves el job duplicarse por versión y la segunda ejecución más rápida por la caché.
+## 38
+- permissions: packages: write y contents: read
+- Steps: docker/login-action (ghcr.io con GITHUB_TOKEN) y docker/build-push-action con tags ghcr.io/${{ github.repository }}:${{ github.sha }}
+- cache-from y cache-to con type=gha
+- Haz push a main y revisa Packages en tu repositorio
+- $ docker pull ghcr.io/TU_USUARIO/REPO:<sha>
+> Cada push a main publica una imagen etiquetada con su SHA.
+## 39
+- Crea los Environments «staging» y «production» en Settings
+- En production: Required reviewers
+- Job deploy con environment: production y un step que haga ssh/docker pull/restart en tu VPS o Cloud Run
+- Dispara el workflow: debe esperar tu aprobación
+- Despliega y luego simula un rollback con la imagen del SHA anterior
+> El despliegue espera aprobación y puedes volver a la versión previa en un paso.
+## 40
+- Crea un proyecto en GitLab y un .gitlab-ci.yml
+- stages: [build, test, deploy]
+- Un job por stage; en test dos jobs en paralelo
+- rules: - if: $CI_COMMIT_BRANCH == "main" en deploy
+- Mueve parte a un include: local: ci/test.yml
+- Mira el pipeline en CI/CD → Pipelines
+> El pipeline equivale al de Actions y deploy solo corre en main.
+## 41
+- $ docker run -d --name jenkins -p 8080:8080 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+- $ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+- Instala los plugins sugeridos y crea un Pipeline desde SCM
+- Jenkinsfile: pipeline { agent any; stages { stage('Build') { steps { sh 'echo build' } } stage('Test') { steps { sh 'echo test' } } } }
+- Ejecuta y revisa Console Output
+> Corre un pipeline declarativo desde un Jenkinsfile de tu repo.
+## 42
+- Elige tu pipeline más lento y mide cada etapa (Actions muestra tiempos)
+- Aplica 3 mejoras: caché de dependencias, jobs independientes en paralelo y tests rápidos primero
+- Mide de nuevo
+- Detecta un test inestable ejecutándolo 20 veces en un bucle y contando fallos
+- Escribe qué cambiaste y el % de mejora
+> Reduces el tiempo al menos 30% y tienes el antes/después documentado.
+## 43
+- Crea la cuenta (free tier) y activa MFA en root
+- IAM → crea un usuario administrador con MFA y deja de usar root
+- Billing → Budgets → presupuesto de 5 USD con alerta por email
+- Elige una región y anota sus zonas de disponibilidad
+- $ aws sts get-caller-identity   (tras configurar el CLI)
+> Tienes MFA, un usuario no-root y una alerta de presupuesto activa.
+## 44
+- Crea un bucket de prueba
+- IAM → Policies → JSON: solo s3:GetObject y s3:PutObject sobre arn:aws:s3:::TU-BUCKET/*
+- Crea un rol y adjúntale la política
+- En el Policy Simulator prueba s3:DeleteObject (debe denegar)
+- $ aws iam simulate-principal-policy --policy-source-arn <ARN-ROL> --action-names s3:DeleteObject
+> El simulador permite Get/Put y deniega Delete.
+## 45
+- EC2 → Launch instance (t2.micro o t3.micro, Amazon Linux)
+- Security group: 22 solo desde tu IP y 80 desde cualquiera
+- User data: #!/bin/bash, dnf install -y nginx, systemctl enable --now nginx
+- Abre http://IP-PUBLICA
+- Termina la instancia al acabar
+> Ves tu página por IP pública y la instancia queda terminada (sin costo).
+## 46
+- Crea un bucket y desactiva Block Public Access solo para este sitio de prueba
+- Sube index.html y activa Static website hosting
+- Política de bucket que permita GetObject público
+- Regla de ciclo de vida: pasar a IA a los 30 días y expirar a los 365
+- Activa el versionado y sube dos versiones del archivo
+> El sitio carga y puedes ver las dos versiones del archivo.
+## 47
+- VPC 10.0.0.0/16
+- Subredes: pública-a 10.0.1.0/24 y privada-a 10.0.2.0/24
+- Internet Gateway y ruta 0.0.0.0/0 en la tabla pública
+- NAT Gateway en la pública y ruta 0.0.0.0/0 en la privada
+- Lanza una EC2 en la privada (sin IP pública) y prueba: $ curl -I https://example.com
+- Elimina el NAT al terminar (cobra por hora)
+> La instancia privada sale a internet pero nadie puede entrar a ella.
+## 48
+- SQS → crea una cola estándar y una DLQ con maxReceiveCount=3
+- $ aws sqs send-message --queue-url <URL> --message-body 'hola'
+- $ aws sqs receive-message --queue-url <URL> --wait-time-seconds 10
+- $ aws sqs delete-message --queue-url <URL> --receipt-handle <HANDLE>
+- Recibe 3 veces sin borrar: el mensaje debe pasar a la DLQ
+> Ves un mensaje enviado, consumido y, tras fallar 3 veces, en la DLQ.
+## 49
+- Crea un Launch template con user data que instale nginx
+- Crea un Target group y un ALB con listener en el 80
+- Crea un ASG con min 2 y max 4 en 2 AZ asociado al target group
+- Abre el DNS del ALB y recarga varias veces
+- Termina una instancia y observa cómo el ASG la reemplaza
+- Elimina todo al final
+> El servicio sigue respondiendo y el ASG repone la instancia terminada.
+## 50
+- Usa AWS Pricing Calculator con tu arquitectura de los días 45 a 49
+- Anota: cómputo, NAT, ALB, almacenamiento y transferencia
+- Puntúa tu diseño contra los 6 pilares de Well-Architected
+- Propón 3 ahorros: rightsizing, apagar fuera de horario, Savings Plan o Spot
+- Define etiquetas obligatorias (Owner, Env, Project)
+> Tienes una estimación mensual y 3 ahorros cuantificados.
+## 51
+- Lambda → crea una función Python que devuelva {"ok": true}
+- API Gateway (HTTP API) → intégrala con la función
+- $ curl https://<id>.execute-api.<region>.amazonaws.com/
+- Mide la latencia fría y caliente con 10 llamadas
+- Compara el costo estimado con la EC2 del día 45
+> Tienes una API pública funcional y una tabla de costo y latencia frente a EC2.
+## 52
+- $ terraform -version
+- Reconstruye en main.tf la VPC del día 47 (aws_vpc, aws_subnet, aws_internet_gateway, aws_route_table)
+- $ terraform init && terraform plan
+- $ terraform apply
+- Comprueba en la consola que coincide con la que hiciste a mano
+- $ terraform destroy
+> Reproduces la VPC con un comando y la destruyes limpiamente.
+## 53
+- variables.tf: instance_type, name, allowed_cidr
+- main.tf: aws_instance y aws_security_group usando esas variables
+- outputs.tf: public_ip
+- $ terraform apply -var 'name=demo'
+- $ terraform output
+- $ terraform destroy
+> Cambias parámetros sin tocar main.tf y recibes la IP como output.
+## 54
+- Crea un bucket S3 para el estado (versionado y cifrado)
+- Backend: backend "s3" { bucket, key, region, use_lockfile = true }
+- $ terraform init -migrate-state
+- Lanza dos terraform apply a la vez en terminales distintas
+- Observa el error de bloqueo
+- $ terraform state list
+> Ves el mensaje de lock y explicas qué habría pasado sin él.
+## 55
+- Crea modules/vpc con variables y outputs
+- module "vpc" { source = "./modules/vpc" cidr = "10.0.0.0/16" }
+- Úsalo desde dos raíces (dev y stage)
+- $ terraform init && terraform plan en cada una
+- Referencia module.vpc.vpc_id desde otro recurso
+> Dos entornos usan el mismo módulo con distinto CIDR.
+## 56
+- Estructura envs/dev y envs/stage, cada una con su propia key de backend
+- dev.tfvars y stage.tfvars con tamaños distintos
+- $ terraform -chdir=envs/dev plan -var-file=dev.tfvars
+- Prueba también $ terraform workspace new stage y compara
+- Escribe cuándo prefieres cada enfoque
+> Planes distintos con el mismo módulo y una nota de pros y contras.
+## 57
+- Workflow en pull_request: fmt, validate y plan
+- Comenta el plan en el PR (actions/github-script o tfcmt)
+- En push a main con environment production: apply
+- OIDC: aws-actions/configure-aws-credentials con role-to-assume
+- Guarda el plan como artefacto: terraform plan -out tfplan y luego terraform apply tfplan
+> El PR muestra el plan y solo un merge aprobado lo aplica.
+## 58
+- $ pip install checkov
+- $ checkov -d . --framework terraform
+- Crea un bucket sin cifrado y público a propósito
+- Observa los checks fallidos y corrígelos
+- Agrega checkov al pipeline (sin --soft-fail)
+> El pipeline falla con el bucket inseguro y pasa tras corregirlo.
+## 59
+- Crea un bucket a mano en la consola
+- Escribe el recurso aws_s3_bucket en tu código
+- $ terraform import aws_s3_bucket.b nombre-del-bucket
+- $ terraform plan   (debe quedar sin cambios)
+- Cambia una etiqueta a mano y ejecuta $ terraform plan -refresh-only
+- Renombra el recurso y usa un bloque moved
+> Importas sin recrear, detectas el drift y refactorizas sin destruir.
+## 60
+- $ pip install ansible   (o sudo apt install -y ansible)
+- Crea inventario.ini con [web] y 2 hosts (VMs, contenedores o localhost)
+- $ ansible all -i inventario.ini -m ping
+- $ ansible web -i inventario.ini -m command -a 'uptime'
+- $ ansible-inventory -i inventario.ini --list
+> Obtienes «pong» de todos los hosts.
+## 61
+- site.yml: hosts: web, become: true; tareas: instalar nginx, copiar index.html, habilitar servicio; handler: reiniciar nginx
+- $ ansible-playbook -i inventario.ini site.yml --check --diff
+- $ ansible-playbook -i inventario.ini site.yml
+- Ejecútalo por segunda vez: debe dar changed=0
+- Cambia index.html y comprueba que el handler corre
+> La segunda ejecución da changed=0 y un cambio dispara solo el handler.
+## 62
+- templates/nginx.conf.j2 con {{ server_name }} y {{ listen_port }}
+- Variables en group_vars/web.yml
+- $ ansible-vault create group_vars/web/vault.yml   (db_password: ...)
+- Usa template: y {{ db_password }} en una tarea
+- $ ansible-playbook site.yml --ask-vault-pass
+- Verifica que el repositorio no tiene secretos en claro
+> El playbook corre con vault y el secreto aparece cifrado en el repositorio.
+## 63
+- $ ansible-galaxy init roles/nginx
+- Mueve tareas, handlers, templates y defaults al rol
+- site.yml: roles: [nginx]
+- Sobrescribe una variable desde el playbook
+- $ ansible-galaxy search nginx   y lee un rol de la comunidad
+> El mismo rol funciona desde dos playbooks con valores distintos.
+## 64
+- Terraform crea 2 VMs o instancias y expone sus IPs como outputs
+- $ terraform output -json   (genera tu inventario a partir de esto)
+- $ ansible-playbook -i inventario site.yml
+- Encadena: $ terraform apply -auto-approve && ansible-playbook -i inventario site.yml
+- Escribe cuándo preferirías imágenes inmutables
+> Un solo comando levanta y configura el entorno.
+## 65
+- $ kind create cluster --name curso
+- $ kubectl get nodes -o wide
+- $ kubectl get pods -n kube-system
+- $ docker exec curso-control-plane ps aux | grep -E 'etcd|kube-apiserver|scheduler'
+- $ kubectl api-resources | head -20
+- Dibuja el plano de control y marca qué hace cada componente
+> Explicas qué ocurre desde kubectl run hasta que el contenedor corre.
+## 66
+- $ kubectl create deployment web --image=nginx:1.26 --replicas=3
+- $ kubectl get deploy,rs,pods
+- $ kubectl set image deploy/web nginx=nginx:1.27
+- $ kubectl rollout status deploy/web && kubectl rollout history deploy/web
+- $ kubectl rollout undo deploy/web
+> Actualizas y vuelves a la versión previa sin downtime.
+## 67
+- $ kubectl expose deploy web --port 80
+- $ kubectl run tmp --rm -it --image=curlimages/curl -- sh
+- Dentro: curl http://web y curl http://web.default.svc.cluster.local
+- $ kubectl get endpoints web
+- Cambia el selector a uno erróneo y observa los endpoints vacíos
+> Resuelves el Service por nombre y reconoces un selector roto.
+## 68
+- Instala un Ingress Controller (nginx) en kind
+- Crea dos Deployments (app1 y app2) y sus Services
+- Ingress: host demo.local, /a → app1 y /b → app2
+- Agrega demo.local a /etc/hosts
+- $ curl demo.local/a && curl demo.local/b
+> Cada ruta responde con su aplicación.
+## 69
+- $ kubectl create configmap app --from-literal=MODO=prod
+- $ kubectl create secret generic db --from-literal=pass=1234
+- Inyecta ambos como variable de entorno y como volumen en un Pod
+- $ kubectl exec <pod> -- env | grep MODO
+- $ kubectl get secret db -o jsonpath='{.data.pass}' | base64 -d
+> Recuperas el secreto con un comando y explicas cómo protegerlo de verdad.
+## 70
+- Crea un StatefulSet de 1 réplica de postgres con volumeClaimTemplates
+- $ kubectl get pvc,pv
+- Escribe una fila en la base de datos
+- $ kubectl delete pod db-0
+- Verifica que la fila sigue ahí cuando el Pod vuelve
+> Los datos sobreviven a la recreación del Pod.
+## 71
+- Pod con requests 50m/32Mi y limits 100m/64Mi
+- Otro que consuma más memoria que su limit (stress --vm-bytes 200M con limit 64Mi)
+- $ kubectl get pod -w   (OOMKilled)
+- Pod con requests exageradas (cpu: 100)
+- $ kubectl describe pod   (Pending: Insufficient cpu)
+> Reproduces OOMKilled y Pending y explicas cada evento.
+## 72
+- Agrega readinessProbe y livenessProbe httpGet a tu Deployment
+- Haz fallar la readiness y observa que el Pod sale de los endpoints
+- $ kubectl autoscale deploy web --cpu-percent=50 --min=1 --max=5
+- Instala metrics-server (en kind necesita --kubelet-insecure-tls)
+- $ kubectl run -it load --rm --image=busybox -- sh -c 'while true; do wget -q -O- http://web; done'
+- $ kubectl get hpa -w
+> Ves aumentar las réplicas bajo carga y volver a bajar.
+## 73
+- $ kubectl create ns equipo-a && kubectl create sa lector -n equipo-a
+- $ kubectl create role ver --verb=get,list,watch --resource=pods -n equipo-a
+- $ kubectl create rolebinding rb --role=ver --serviceaccount=equipo-a:lector -n equipo-a
+- $ kubectl auth can-i list pods -n equipo-a --as=system:serviceaccount:equipo-a:lector
+- $ kubectl auth can-i delete pods -n equipo-a --as=system:serviceaccount:equipo-a:lector
+> Puede listar pero no borrar; lo demuestras con can-i.
+## 74
+- Namespace con dos apps (frontend y db)
+- NetworkPolicy default-deny de ingress en el namespace
+- Permite solo frontend → db en el puerto 5432
+- Prueba desde frontend (conecta) y desde otro Pod (bloqueado)
+- Agrega securityContext: runAsNonRoot: true y readOnlyRootFilesystem: true
+- Nota: en kind necesitas un CNI con soporte (Calico)
+> Solo el frontend llega a la base; el resto está bloqueado.
+## 75
+- $ helm create miapp
+- Edita values.yaml: image.tag y replicaCount
+- Crea values-dev.yaml y values-prod.yaml
+- $ helm template miapp ./miapp -f values-dev.yaml
+- $ helm install miapp ./miapp -f values-dev.yaml
+- $ helm upgrade miapp ./miapp -f values-prod.yaml && helm rollback miapp 1
+> Instalas, actualizas y vuelves a una versión de tu chart.
+## 76
+- $ kubectl create ns argocd && kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+- $ kubectl port-forward svc/argocd-server -n argocd 8443:443
+- $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d
+- Crea una Application que apunte al repo de tus manifiestos
+- Cambia las réplicas de 2 a 3 en Git y observa el sync
+> Un commit en Git cambia el clúster sin ejecutar kubectl.
+## 77
+- Inyecta 5 fallas: imagen inexistente, comando que sale con error, requests imposibles, readiness que falla y selector erróneo
+- Para cada una: $ kubectl get pods; kubectl describe pod X; kubectl logs X --previous; kubectl get events --sort-by=.lastTimestamp
+- Escribe la tabla síntoma → causa → arreglo
+- $ kubectl debug -it <pod> --image=busybox --target=<contenedor>
+> Diagnosticas las 5 fallas en menos de 5 minutos cada una.
+## 78
+- $ alias k=kubectl && source <(kubectl completion bash) && complete -o default -F __start_kubectl k
+- Practica: $ k create deploy x --image=nginx --dry-run=client -o yaml
+- Resuelve escenarios de CKA en Killercoda con cronómetro de 2 horas
+- Anota qué comando no recordabas y practícalo 5 veces
+> Completas la mayoría de tareas a tiempo y tienes tu lista de huecos.
+## 79
+- Toma la app del día 29 y agrega un endpoint /metrics (prom-client o prometheus_client)
+- Expón un contador de peticiones y un histograma de latencia
+- $ curl localhost:PUERTO/metrics
+- Genera tráfico y compara cómo cambian los valores
+- Escribe qué pregunta responde una métrica, un log y una traza
+> Tu app expone métricas con nombres y labels coherentes.
+## 80
+- $ docker run -d -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+- prometheus.yml: scrape_configs apuntando a tu app
+- En http://localhost:9090 prueba: up y rate(http_requests_total[1m])
+- histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))
+- Escribe 5 consultas y qué responde cada una
+> Obtienes tasa, errores y p95 con PromQL.
+## 81
+- $ docker run -d -p 3000:3000 grafana/grafana
+- Agrega Prometheus como data source (http://host.docker.internal:9090)
+- Panel 1: tasa de peticiones; Panel 2: % de errores; Panel 3: p95 de latencia (método RED)
+- Crea una alerta cuando errores > 5% durante 5 minutos
+- Exporta el dashboard a JSON
+> Un dashboard RED y una alerta accionable con descripción.
+## 82
+- docker compose con loki, promtail y grafana
+- Haz que tu app escriba logs en JSON
+- En Grafana → Explore → Loki: {app="mi-app"} |= "error"
+- Filtra por campo: | json | status >= 500
+- Agrega un correlation_id a cada log
+> Encuentras un error concreto con una consulta en menos de un minuto.
+## 83
+- $ docker run -p 16686:16686 -p 4317:4317 jaegertracing/all-in-one
+- Instrumenta 2 servicios con OpenTelemetry (SDK o auto-instrumentación)
+- Haz que A llame a B
+- Abre http://localhost:16686 y busca la traza
+- Identifica qué span tarda más
+> Ves una traza con spans de ambos servicios y señalas el cuello de botella.
+## 84
+- Elige un servicio y define un SLI (p. ej., % de peticiones < 300 ms y sin 5xx)
+- Fija un SLO (99,5% mensual) y calcula el presupuesto de error
+- Simula un incidente (apaga un backend 10 minutos)
+- Escribe un postmortem sin culpables: resumen, línea de tiempo, causa raíz, qué fue bien y mal, acciones
+- Define 3 acciones con responsable y fecha
+> Tienes un SLO y un postmortem con acciones concretas.
+## 85
+- Agrega al pipeline: trivy fs . y trivy image
+- $ pip install semgrep && semgrep --config auto
+- Planta una vulnerabilidad (dependencia vieja o un secreto falso)
+- Observa que el pipeline falla; corrige y verifica que pasa
+- Escribe qué hallazgos son accionables y cuáles ruido
+> El pipeline bloquea la vulnerabilidad plantada.
+## 86
+- $ cosign generate-key-pair
+- $ cosign sign --key cosign.key ghcr.io/TU_USUARIO/app@sha256:<DIGEST>
+- $ cosign verify --key cosign.pub ghcr.io/TU_USUARIO/app@sha256:<DIGEST>
+- Verifica una imagen sin firmar: debe fallar
+- $ syft ghcr.io/TU_USUARIO/app:0.1.0 -o spdx-json > sbom.json
+> La verificación pasa para la imagen firmada y falla para la que no lo está.
+## 87
+- Define el problema y el alcance mínimo: app de 2 servicios (API + worker) con base de datos
+- Dibuja la arquitectura (servicios, red, CI/CD, observabilidad)
+- Escribe 3 ADRs: nube, orquestación y estrategia de despliegue
+- Define criterios de éxito medibles (despliegue en menos de 10 min, SLO 99,5%)
+- Crea el repositorio con README y estructura
+> El README explica arquitectura, decisiones y cómo se mide el éxito.
+## 88
+- Terraform: red, clúster o instancias y registry
+- Pipeline: build, test, escaneo, push y deploy con aprobación
+- Entornos dev y prod separados
+- Prueba un push de punta a punta
+- Prueba el rollback a la versión anterior
+- Documenta el flujo en el README
+> Un push a main despliega en dev y prod requiere aprobación.
+## 89
+- Despliega la app en Kubernetes con Helm o manifiestos
+- Instala kube-prometheus-stack o Prometheus + Grafana
+- Dashboard RED y alerta por SLO
+- Políticas: NetworkPolicy default-deny y runAsNonRoot
+- Escaneo de imagen en el pipeline
+- Simula una falla y comprueba que la alerta salta
+> Ves la alerta, el dashboard y la política bloqueando algo indebido.
+## 90
+- Revisa tu repo: README claro, diagrama e instrucciones de ejecución
+- Graba un demo de 5 minutos: push → pipeline → despliegue → métricas → rollback
+- Añade el runbook y el postmortem
+- Publica el repo y el video (YouTube no listado o GitHub)
+- Actualiza tu CV y LinkedIn con 3 logros medibles
+> Alguien ajeno puede entender y reproducir tu proyecto en 10 minutos.
+</script>
+<script src="data.js"></script>
+<script src="quizzes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
